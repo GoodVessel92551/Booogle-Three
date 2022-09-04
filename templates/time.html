@@ -10,14 +10,19 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
         <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
-        <script src="https://replit.com/public/js/repl-auth-v2.js"></script>
     </head>
     <body>
-        <div class="login">
-            <h1 class="welcome">Welcome To Booogle 3</h1>
-            <span class="need">You Will Need To Login With Replit To Use Booogle 3</span>
-            <button onclick="LoginWithReplit()" class="replit-auth-button">Login With Replit</button>
+        <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
+        <a href="/home"><img src="/static/icons/toplogo.png" class="toplogo"></a>
+        <div class="home">
+            <a href="/current" style="animation-delay:0.6s;background-image:url(/static/icons/time/time.png);"></a>
+            <a href="/stopwatch" style="animation-delay:0.9s;background-image:url(/static/icons/time/stopwatch.png);"></a>
+            <a href="/countdown-timer" style="animation-delay:01.2s;background-image:url(/static/icons/time/countdown.png);"></a>
         </div>
-        <script src="https://replit.com/public/js/replit-badge.js" theme="orange" defer></script>
+        <script>
+            profile = {{profile_pic|tojson}};
+            name = {{name|tojson}};
+            document.getElementById("profile").src = profile
+        </script>
     </body>
 </html>

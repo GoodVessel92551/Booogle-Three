@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <title>Booogle</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel = "icon" href = "static/logo.png" type = "image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="pic" style="animation-delay:1.5s;"><img id="profile"></img></a></div>
+        <a href="/home"><img src="/static/icons/toplogo.png" class="toplogo"></a>
+        <div class="calc">
+            <button class="screen" id="screen">Press or Type</button><br>
+            <button class="but1" onclick="calc('=')">=</button><br>
+            <button class="but2" onclick="calc('7')">7</button>
+            <button class="but2" onclick="calc('8')">8</button>
+            <button class="but2" onclick="calc('9')">9</button>
+            <button class="but3" onclick="calc('ac')">Ac</button>
+            <button class="but3" onclick="calc('del')">Del</button><br>
+            <button class="but2" onclick="calc('4')">4</button>
+            <button class="but2" onclick="calc('5')">5</button>
+            <button class="but2" onclick="calc('6')">6</button>
+            <button class="but3" onclick="calc('(')">(</button>
+            <button class="but3" onclick="calc(')')">)</button><br>
+            <button class="but2" onclick="calc('1')">1</button>
+            <button class="but2" onclick="calc('2')">2</button>
+            <button class="but2" onclick="calc('3')">3</button>
+            <button class="but3" onclick="calc('+')">+</button>
+            <button class="but3" onclick="calc('x')">x</button><br>
+            <button class="but3" onclick="calc('ans')">Ans</button>
+            <button class="but2" onclick="calc('0')">0</button>
+            <button class="but3" onclick="calc('.')">.</button>
+            <button class="but3" onclick="calc('-')">-</button>
+            <button class="but3" onclick="calc('/')">÷</button>
+        </div>
+        <script>
+            profile = {{profile_pic|tojson}};
+            name = {{name|tojson}};
+            document.getElementById("profile").src = profile
+        </script>
+        <script src="static/calc.js"></script>
+    </body>
+</html>

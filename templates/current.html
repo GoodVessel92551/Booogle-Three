@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <title>Booogle</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel = "icon" href = "/static/logo.png" type = "image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
+        <a href="/time"><img src="/static/icons/toplogo.png" class="toplogo"></a>
+        <span class="time" id="time">10:20:22</span>
+        <span class="date" id="date">Date</span>
+        <script>
+            profile = {{profile_pic|tojson}};
+            name = {{name|tojson}};
+            document.getElementById("profile").src = profile
+            var id = setInterval(time, 1000)
+            var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+            function time() {
+                const date = new Date()
+                var dateletter = ""
+                var hour = date.getHours()
+                var minute = date.getMinutes()
+                var second = date.getSeconds()
+                var datenum = date.getDate()
+                var fullyear = date.getFullYear()
+                if(datenum == 13 || datenum == 12 || datenum == 11){
+                    dateletter = "th"
+                }else if (datenum == 1 || datenum == 21 || datenum == 31){
+                    dateletter = "st"
+                }else if (datenum == 2 || datenum == 22){
+                    dateletter = "nd"
+                }else if (datenum == 3 || datenum == 23){
+                    dateletter = "rd"
+                }else{
+                    dateletter = "th"
+                }
+                document.getElementById("time").innerText = hour + " : " + minute + " : " + second
+                document.getElementById("date").innerText = days[date.getDay()] + " " + datenum + dateletter + " " + months[date.getMonth()] + " " + fullyear
+            }
+            time()
+        </script>
+    </body>
+</html>

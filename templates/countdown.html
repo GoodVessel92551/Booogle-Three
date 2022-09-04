@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <title>Booogle</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel = "icon" href = "static/logo.png" type = "image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <title>Booogle</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel = "icon" href = "/static/logo.png" type = "image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
+        <a href="/time"><img src="/static/icons/toplogo.png" class="toplogo"></a>
+        <span class="time" id="time">10:20:22</span>
+        <button class="start" id="start" onclick="start()">Start</button>
+        <script>
+            profile = {{profile_pic|tojson}};
+            name = {{name|tojson}};
+            document.getElementById("profile").src = profile
+            var  time = ["1", "2", "1"];
+            let start2 = true
+            document.getElementById("time").innerText = time[0]+" : "+time[1]+" : "+time[2]
+            function start() {
+                if (start2 == true){
+                    document.getElementById("start").innerHTML = "Stop"
+                    var id = setInterval(countdown, 1000)
+                    start2 = false
+                }else{
+                    stop()
+                }
+            }
+            function stop() {
+                document.getElementById("start").innerText = "Start"
+                start2 = true
+                clearInterval(id)
+            }
+            function countdown() {
+                if (time[2] == 0 && time[1] != 0){
+                    time[2] = 60
+                    time[1] -= 1
+                }
+                else if (time[1] == 0 && time[0] != 0){
+                    time[1] = 60
+                    time[0] -= 1
+                }
+                else if (time[0] == 0 && time[1] == 0 && time[2] == 0){
+                    clearInterval(id)
+                }else{
+                    time[2] -= 1
+                    document.getElementById("time").innerHTML = time[0]+" : "+time[1]+" : "+time[2]
+                    document.getElementById("timetitle").innerHTML = "Timer: "+time[0]+" : "+time[1]+" : "+time[2]
+                }
+                }
+    </script>
+        </script>
+    </body>
