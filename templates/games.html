@@ -14,10 +14,10 @@
     <body>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
         <a href="/home"><img src="/static/icons/toplogo.png" class="toplogo"></a>
-        <div class="home">
-            <a href="/current" style="animation-delay:0.6s;background-image:url(/static/icons/time/time.png);"></a>
-            <a href="/stopwatch" style="animation-delay:0.9s;background-image:url(/static/icons/time/stopwatch.png);"></a>
-            <a href="/countdown-timer" style="animation-delay:01.2s;background-image:url(/static/icons/time/countdown.png);"></a>
+        <div class="games">
+            <a style="animation-delay:0.6s;" href="/play?game=parkour"><b>Parkour Game</b><br><br><span>This is a small parkour game. To play use the arrow keys or wasd and try to avoid the lava and falling off. To finish the level you need to get to the golden '!'.</span></a>
+            <a style="animation-delay:0.9s;" href="/play?game=maze"><b>Maze Game</b><br><br><span>The maze game is a simple puzzle game in which you have to try to find your way to a black hole and jump in it to get to the next level but you have limited vision. You use the arrow keys to move and try not to touch the lava.</span></a>
+            <a style="animation-delay:1.2s;" href="/play?game=adventure"><b>Adventure Game</b><br><br><span>This is a small Adventure Game where the aim is to complete quests to move onto the next level.  To move use the arrow keys or WASD. IT will also save your loot and what level you are on.</span></a>
         </div>
         <script>
             profile = {{profile_pic|tojson}};

@@ -14,11 +14,12 @@
     <body>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
         <a href="/home"><img src="/static/icons/toplogo.png" class="toplogo"></a>
-        <div class="home">
-            <a href="/current" style="animation-delay:0.6s;background-image:url(/static/icons/time/time.png);"></a>
-            <a href="/stopwatch" style="animation-delay:0.9s;background-image:url(/static/icons/time/stopwatch.png);"></a>
-            <a href="/countdown-timer" style="animation-delay:01.2s;background-image:url(/static/icons/time/countdown.png);"></a>
-        </div>
+        <form class="editform">
+            <h2>Edit</h2>
+            <input required type="text" name="title" class="title" placeholder="Title" maxlength="40" autofocus><br>
+            <textarea class="title" name="desc" style="height:150px;" required placeholder="Description" maxlength="400"></textarea><br>
+            <input type="submit" class="send" value="Submit">
+        </form>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};

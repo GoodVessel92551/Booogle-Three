@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <title>Booogle</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel = "icon" href = "static/logo.png" type = "image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <title>Booogle</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel = "icon" href = "/static/logo.png" type = "image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
+        <a href="/home"><img src="/static/icons/toplogo.png" class="toplogo"></a>
+            <dialog class="edit" id="taskmake">
+            <span class="close" onclick="document.getElementById('taskmake').close()">close</span>
+            <form method="post">
+                <h3 style="color:var(--light);">Make a Task</h3>
+                <textarea name="task" id="desc" class=desc></textarea>
+                <input type="submit" class="submit" id="submit">
+            </form>
+        </dialog>
+			<div class="tasks" id="tasks">
+			</div>
+        <script>
+            profile = {{profile_pic|tojson}};
+            name = {{name|tojson}};
+			tasksarray = {{tasks|tojson}}
+			var start = 0.3
+			console.log(tasks)
+            document.getElementById("profile").src = profile
+			for(var i = 0;i<tasksarray.length;i+=3){
+				console.log(i)
+				console.log(tasksarray[i+1])
+				var num = tasksarray[i+2]
+				var title1 = tasksarray[i]
+				var text1 = tasksarray[i+1]
+				var tasks = document.getElementById("tasks")
+	            var task = document.createElement('a')
+				var title = document.createElement('b')
+				var text = document.createElement('p')
+				var button = document.createElement("button")
+				button.innerText = "delete"
+				button.classList.add("delit")
+				button.id = num
+				start+=0.3
+				task.style.animationDelay = start+"s"
+				button.addEventListener("click",(e) => {
+					console.log(e.target.id)
+				})
+				text.innerText = text1
+				title.innerText = title1
+				task.appendChild(button)
+				tasks.appendChild(task)
+				task.appendChild(title)
+				task.appendChild(text)
+			}
+
+			
+			function open(y) {
+				console.log(y)
+			}
+            //document.getElementById('taskmake').showModal()
+        </script>
+        <script src="static/app.js"></script>
+    </body>
+</html>

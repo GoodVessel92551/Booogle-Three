@@ -31,6 +31,11 @@
                 var second = date.getSeconds()
                 var datenum = date.getDate()
                 var fullyear = date.getFullYear()
+                hour = update(hour);
+                minute = update(minute)
+                second = update(second)
+                datenum = update(datenum)
+                fullyear = update(fullyear)
                 if(datenum == 13 || datenum == 12 || datenum == 11){
                     dateletter = "th"
                 }else if (datenum == 1 || datenum == 21 || datenum == 31){
@@ -42,10 +47,18 @@
                 }else{
                     dateletter = "th"
                 }
+                function update(t) {
+                    if (t < 10) {
+                        return "0" + t
+                    }else{
+                        return t
+                }
+                }
                 document.getElementById("time").innerText = hour + " : " + minute + " : " + second
                 document.getElementById("date").innerText = days[date.getDay()] + " " + datenum + dateletter + " " + months[date.getMonth()] + " " + fullyear
             }
             time()
         </script>
+        <script src="static/app.js"></script>
     </body>
 </html>

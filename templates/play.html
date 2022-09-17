@@ -14,15 +14,21 @@
     <body>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
         <a href="/home"><img src="/static/icons/toplogo.png" class="toplogo"></a>
-        <div class="home">
-            <a href="/current" style="animation-delay:0.6s;background-image:url(/static/icons/time/time.png);"></a>
-            <a href="/stopwatch" style="animation-delay:0.9s;background-image:url(/static/icons/time/stopwatch.png);"></a>
-            <a href="/countdown-timer" style="animation-delay:01.2s;background-image:url(/static/icons/time/countdown.png);"></a>
-        </div>
+        <iframe class="write" id="play"></iframe>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
+            game = {{game|tojson}};
             document.getElementById("profile").src = profile
+            console.log(game)
+            if (game == "parkour"){
+                document.getElementById("play").src = "https://parkour-game.goodvessel92551.repl.co/"
+            }
+            else if(game == "maze"){
+                document.getElementById("play").src = "https://the-maze-game.goodvessel92551.repl.co/"
+            }else{
+                document.getElementById("play").src = "https://the-adventure-game.goodvessel92551.repl.co"
+            }
         </script>
         <script src="static/app.js"></script>
     </body>
