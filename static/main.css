@@ -93,6 +93,7 @@ body, html{
 }
 
 .replit-auth-button:where(:hover, :focus){
+    outline:none;
     filter:brightness(85%);
     transform:scale(0.95);
 }
@@ -152,6 +153,7 @@ body, html{
 }
 
 .home a:where(:hover, :focus){
+    outline:none;
     transform:scale(0.97);
     box-shadow:none;
     filter:brightness(95%);
@@ -177,6 +179,7 @@ body, html{
 }
 
 .toplogo:where(:hover, :focus){
+    outline:none;
     transform:scale(0.97);
     box-shadow:none;
     filter:brightness(95%);
@@ -208,6 +211,7 @@ body, html{
 }
 
 .pic:where(:hover, :focus){
+    outline:none;
     transform:scale(0.97);
     box-shadow:none;
     filter:brightness(95%);
@@ -256,6 +260,7 @@ body, html{
 }
 
 .but1:where(:hover, :focus){
+    outline:none;
     border-color:var(--color);
     transform:scale(0.99);
     box-shadow:none;
@@ -277,6 +282,7 @@ body, html{
 }
 
 .but2:where(:hover, :focus){
+    outline:none;
     border-color:var(--color);
     transform:scale(0.97);
     box-shadow:none;
@@ -298,6 +304,7 @@ body, html{
 }
 
 .but3:where(:hover, :focus){
+    outline:none;
     transform:scale(0.97);
     box-shadow:none;
 }
@@ -343,6 +350,7 @@ body, html{
 }
 
 .number:where(:hover, :focus),.numgo:where(:hover, :focus){
+    outline:none;
     border-color:var(--color);
     transform:scale(0.98);
 }
@@ -433,6 +441,7 @@ body, html{
 }
 
 .start:where(:hover, :focus){
+    outline:none;
     border-color:var(--color);
     transform: scale(0.98);
 }
@@ -470,6 +479,7 @@ body, html{
 }
 
 .textbox:where(:hover, :focus){
+    outline:none;
     border-color:var(--color2);
     transform:scale(0.98);
 }
@@ -493,6 +503,7 @@ body, html{
 }
 
 .desc:where(:hover, :focus){
+    outline:none;
     border-color:var(--color2);
     transform:scale(0.98);
 }
@@ -517,6 +528,7 @@ body, html{
 }
 
 .submit:where(:hover, :focus){
+    outline:none;
     border-color:var(--color2);
     transform:scale(0.98);
 }
@@ -546,6 +558,7 @@ body, html{
 }
 
 .close:where(:hover, :focus){
+    outline:none;
     border-color:var(--color);
     transform:scale(0.9);
 }
@@ -598,6 +611,7 @@ body, html{
 }
 
 .games a:where(:hover, :focus){
+    outline:none;
     border-color:var(--color);
     box-shadow:none;
     transform:scale(0.98);
@@ -674,6 +688,7 @@ body, html{
 }
 
 .send:where(:hover, :focus){
+    outline:none;
     filter:brightness(85%);
     transform:scale(0.98);
 }
@@ -738,4 +753,65 @@ body, html{
 	border-color:#db0000;
 	scale:0.9;
 	color:#db0000;
+}
+
+.icon{
+    font-family: 'Material Icons';
+    line-height:10px;
+    font-size:16px;
+    position:relative;
+    top:3px;
+}
+
+.editit{
+    height:150px;
+    width:400px;
+    border:2px solid var(--border2);
+    background:var(--backborder2);
+    border-radius:5px;
+    color:var(--light);
+}
+
+.editit::backdrop{
+    background:rgba(0,0,0,0.7);
+}
+
+.editdiv{
+    position:absolute;
+    right:10px;
+    bottom:10px;
+}
+.edititbutton{
+    background:var(--backborder2);
+    color:var(--light);
+    border:1px solid var(--border2);
+    border-radius:5px;
+    height:30px;
+    width:70px;
+    float:right;
+    margin:2px;
+    padding:5px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+#del:where(:hover, :focus){
+    outline:none;
+    border-color:#db0000;
+    color:#db0000;
+    scale:0.95;
+}
+
+#ed:where(:hover, :focus){
+    outline:none;
+    border-color:#30910d;
+    color:#30910d;
+    scale:0.95;
+}
+
+#cancel:where(:hover, :focus){
+    outline:none;
+    border-color:var(--color);
+    color:var(--color);
+    scale:0.95;
 }

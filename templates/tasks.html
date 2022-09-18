@@ -31,15 +31,23 @@
                 <textarea name="task" id="desc" class=desc></textarea>
                 <input type="submit" class="submit" id="submit">
             </form>
+            </dialog>
+        <div class="tasks" id="tasks"></div>
+        <dialog id="edit" class="editit">
+            <h2>Do You Want To Delete Or Edit This Task?</h2>
+            <div class="editdiv">
+                <button class="edititbutton" id="del"><span class="icon">delete</span>Delete</button>
+                <button class="edititbutton" id="ed"><span class="icon">edit</span>Edit</button>
+                <button class="edititbutton" onclick="document.getElementById('edit').close()" id="cancel" autofocus>Cancel</button>
+            </div>
         </dialog>
-			<div class="tasks" id="tasks">
-			</div>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
 			tasksarray = {{tasks|tojson}}
 			var start = 0.3
 			console.log(tasks)
+            document.getElementById("edit").showModal()
             document.getElementById("profile").src = profile
 			for(var i = 0;i<tasksarray.length;i+=3){
 				console.log(i)
@@ -51,18 +59,14 @@
 	            var task = document.createElement('a')
 				var title = document.createElement('b')
 				var text = document.createElement('p')
-				var button = document.createElement("button")
-				button.innerText = "delete"
-				button.classList.add("delit")
-				button.id = num
+                task.id = num
 				start+=0.3
 				task.style.animationDelay = start+"s"
-				button.addEventListener("click",(e) => {
+				task.addEventListener("click",(e) => {
 					console.log(e.target.id)
 				})
 				text.innerText = text1
 				title.innerText = title1
-				task.appendChild(button)
 				tasks.appendChild(task)
 				task.appendChild(title)
 				task.appendChild(text)
