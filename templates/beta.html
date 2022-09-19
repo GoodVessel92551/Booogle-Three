@@ -22,34 +22,21 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
-        <h2 class="notasks" id="notasks">You Have No Tasks</h2>
+        <h2 class="notasks" id="notasks">No one wants to join</h2>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
         <a href="/home"><img src="/static/icons/toplogo.png" class="toplogo"></a>
             <dialog class="edit" id="taskmake">
             <span class="close" onclick="document.getElementById('taskmake').close()">close</span>
-            <form method="post">
-                <h3 style="color:var(--light);">Make a Task</h3>
-                <textarea name="task" id="desc" class=desc></textarea>
-                <input type="submit" class="submit" id="submit">
-            </form>
             </dialog>
         <div class="tasks" id="tasks"></div>
-        <dialog id="edit" class="editit">
-            <h3>Do You Want To Delete Or Edit This Task?</h3>
-            <p>If you delete it you will not be able to get it back. You can edit a tasks infinite times. Press cancel to close.</p>
-            <div class="editdiv">
-                <button onclick="del()" class="edititbutton" id="del"><span class="icon">delete</span>Delete</button>
-                <button onclick="edit()" class="edititbutton" id="ed"><span class="icon">edit</span>Edit</button>
-                <button class="edititbutton" onclick="document.getElementById('edit').close()" id="cancel" autofocus>Cancel</button>
-            </div>
-        </dialog>
-        <div class="startcont">
-            <button class="start" id="new" onclick="window.open('/new','_self')">Make a Task</button>
-        </div>
+        <form method="post" class="startcont">
+            <input type="text" name="name" class="title" style="background:var(--backborder);border-color:var(--border);" required placeholder="Add to Beta">
+        </form>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
 			tasksarray = {{tasks|tojson}}
+            console.log(tasksarray)
 			var start = 0.3
 			console.log(tasks)
             document.getElementById("profile").src = profile
@@ -57,36 +44,21 @@
                 document.getElementById("notasks").style.display = "block"
             }
 			for(var i = 0;i<tasksarray.length;i+=3){
-				console.log(i)
-				console.log(tasksarray[i+1])
-				var num = tasksarray[i]
-				var title1 = tasksarray[i+1]
-				var text1 = tasksarray[i+2]
+				var title1 = tasksarray[i]
+				var text1 = tasksarray[i+1]
 				var tasks = document.getElementById("tasks")
 	            var task = document.createElement('a')
 				var title = document.createElement('b')
 				var text = document.createElement('p')
                 var current
-                task.id = num
 				start+=0.3
 				task.style.animationDelay = start+"s"
-				task.addEventListener("click",(e) => {
-                    document.getElementById("edit").showModal()
-					console.log(e.target.id)
-                    current = e.target.id
-				})
 				text.innerText = text1
 				title.innerText = title1
 				tasks.appendChild(task)
 				task.appendChild(title)
 				task.appendChild(text)
 			}
-            function del() {
-                window.open("/delete?id="+current,"_self")
-            }
-            function edit() {
-                window.open("/edit_task?id="+current,"_self")
-            }
 			
             //document.getElementById('taskmake').showModal()
         </script>

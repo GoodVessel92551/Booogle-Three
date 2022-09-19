@@ -160,8 +160,8 @@ body, html{
 }
 
 .toplogo{
-    height:120px;
     width:500px;
+    height:auto;
     background-color:var(--color);
     transform:scale(1);
     padding:5px;
@@ -171,9 +171,9 @@ body, html{
     box-shadow:3px 3px 3px rgba(0,0,0,0.3);
     transition:.2s;
     animation:load2 2s ease alternate;
-	animation-delay:5s;
     top:20px;
-    left:calc(50% - 250px);
+    left:50%;
+    translate:-50% 0%;
     position:absolute;
 
 }
@@ -183,6 +183,12 @@ body, html{
     transform:scale(0.97);
     box-shadow:none;
     filter:brightness(95%);
+}
+
+@media screen and (max-width:515px){
+    .toplogo{
+        width:200px;
+    }
 }
 
 .pic{
@@ -210,6 +216,12 @@ body, html{
     
 }
 
+@media screen and (max-width:650px){
+    .pic{
+        display:none;
+    }
+}
+
 .pic:where(:hover, :focus){
     outline:none;
     transform:scale(0.97);
@@ -223,90 +235,99 @@ body, html{
     to{opacity:1}
 }
 .calc{
-    border-radius:5px;
+    border-radius:10px;
     top:200px;
     left: 50%;
     position:absolute;
     transform: translate(-50%, 0%);
     animation:load3 3s ease alternate;
+    overflow:hidden;
+    border:1px solid var(--border);
+    transition:.2s;
 }
 
+.calc:where(:hover, :focus){
+    outline:none;
+    border-color:var(--color);
+}
+
+
 .screen{
-    min-width:320px;
+    display: table-cell;
+    vertical-align: bottom;
+    padding:10px;
+    color:var(--light);
+    font-size:25px;
+    font-weight:bold;
+    min-width:300px;
     height:100px;
-    background:#fff;
-    border:2px solid #ccc;
-    border-radius:4px;
-    margin:1px;
+    background:var(--backborder);
+    border:none;
     transition:.2s;
-    cursor:pointer;
-    box-shadow:1px 1px 1px rgba(0,0,0,0.2);
+    text-align:right;
 }
 
 
 .but1{
+    line-height:40px;
     text-align:center;
     width:320px;
     height:40px;
-    background:#333333;
-    border:2px solid #1c1c1c;
-    border-radius:4px;
-    margin:1px 0.5px;
+    background:var(--backborder);
+    border:2px solid var(--border);
+    border:none;
     transition:.2s;
     cursor:pointer;
-    box-shadow:1px 1px 1px rgba(0,0,0,0.2);
-    color:#fff;
-    font-size:15px;
+    color:var(--light);
+    font-size:16px;
+    overflow:hidden;
 }
 
 .but1:where(:hover, :focus){
     outline:none;
-    border-color:var(--color);
-    transform:scale(0.99);
-    box-shadow:none;
+    filter:brightness(94%);
+    color:var(--color);
 }
 
 .but2{
+    line-height:70px;
+    float:left;
     text-align:center;
-    width:60px;
-    height:60px;
-    background:#333333;
-    border:2px solid #1c1c1c;
-    border-radius:4px;
-    margin:1px 0.5px;
+    width:64px;
+    height:70px;
+    background:var(--backborder);
+    border:none;
     transition:.2s;
     cursor:pointer;
-    box-shadow:1px 1px 1px rgba(0,0,0,0.2);
-    font-size:15px;
-    color:#fff;
+    font-size:16px;
+    color:var(--light);
+    overflow:hidden;
 }
 
 .but2:where(:hover, :focus){
     outline:none;
-    border-color:var(--color);
-    transform:scale(0.97);
-    box-shadow:none;
+    filter:brightness(94%);
+    color:var(--color);
 }
 
 .but3{
+    line-height:70px;
+    float:left;
     text-align:center;
-    width:60px;
-    height:60px;
-    background:var(--color);
-    border:2px solid var(--color2);
-    border-radius:4px;
-    margin:1px 0.5px;
+    width:64px;
+    height:70px;
+    background:var(--backborder);
+    border:none;
     transition:.2s;
     cursor:pointer;
-    box-shadow:1px 1px 1px rgba(0,0,0,0.2);
-    font-size:15px;
-    color:#292929
+    font-size:16px;
+    color:var(--light);
 }
 
 .but3:where(:hover, :focus){
     outline:none;
-    transform:scale(0.97);
-    box-shadow:none;
+    filter:brightness(94%);
+    color:var(--color);
 }
 
 .number{
@@ -366,7 +387,7 @@ body, html{
 }
 
 .time{
-    top:30%;
+    bottom:50%;
     left: 50%;
     position:absolute;
     transform: translate(-50%, 0%);
@@ -378,6 +399,60 @@ body, html{
     padding:10px;
     white-space: nowrap;
     animation:load3 3s ease alternate;
+    transition:.2s;
+}
+
+.date{
+    bottom:30%;
+    left: 50%;
+    position:absolute;
+    transform: translate(-50%, 0%);
+    font-size:30px;
+    max-font-size:50px;
+    font-weight:700;
+    background:var(--backborder);
+    border-radius:10px;
+    border:2px solid var(--border);
+    padding:10px;
+    white-space: nowrap;
+    animation:load3 3s ease alternate;
+    transition:.2s;
+}
+
+@media screen and (max-width:1100px){
+    .time{
+        font-size:150px;
+    }
+    .date{
+        font-size:30px;
+    }
+}
+
+@media screen and (max-height:900px){
+    .time{
+        bottom:30%;
+    }
+    .date{
+        bottom:10%;
+    }
+}
+
+@media screen and (max-width:850px){
+    .time{
+        font-size:100px;
+    }
+    .date{
+        font-size:25px;
+    }
+}
+
+@media screen and (max-width:550px){
+    .time{
+        font-size:70px;
+    }
+    .date{
+        font-size:15px;
+    }
 }
 
 
@@ -393,20 +468,6 @@ body, html{
 @keyframes close{
     from{top:0%;opacity:0;}
     to{top:100%}
-}
-.date{
-    top:210px;
-    left: 50%;
-    position:absolute;
-    transform: translate(-50%, 0%);
-    font-size:2vw;
-    font-weight:700;
-    background:var(--backborder);
-    border-radius:10px;
-    border:2px solid var(--border);
-    padding:10px;
-    white-space: nowrap;
-    animation:load3 3s ease alternate;
 }
 
 .write{
@@ -711,13 +772,13 @@ body, html{
 	border:2px solid var(--border2);
 	border-radius:5px;
 	margin:5px;
-	padding:5px;
+	padding:10px;
 	color:var(--light);
 	transition:.2s;
 	overflow-y:scroll;
 	text-decoration:none;
 	animation:load2 3s ease alternate;
-	width:500px;
+	width:clamp(500px,500px,200px);
 	text-align:left;
 	height:250px;
 	cursor:pointer;
@@ -764,7 +825,7 @@ body, html{
 }
 
 .editit{
-    height:150px;
+    height:170px;
     width:400px;
     border:2px solid var(--border2);
     background:var(--backborder2);
@@ -784,7 +845,7 @@ body, html{
 .edititbutton{
     background:var(--backborder2);
     color:var(--light);
-    border:1px solid var(--border2);
+    border:2px solid var(--border2);
     border-radius:5px;
     height:30px;
     width:70px;
@@ -814,4 +875,26 @@ body, html{
     border-color:var(--color);
     color:var(--color);
     scale:0.95;
+}
+
+.notasks{
+    position:absolute;
+    left:50%;
+    top:200px;
+    translate:-50% 0%;
+    background:var(--backborder);
+    padding:10px;
+    border-radius:5px;
+    display:none;
+}
+
+.join{
+    position:absolute;
+    left:50%;
+    top:200px;
+    translate:-50% 0%;
+    background:var(--backborder);
+    border:2px solid var(--border);
+    padding:10px;
+    border-radius:5px;
 }
