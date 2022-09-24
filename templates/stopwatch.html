@@ -63,10 +63,12 @@
                     
                     time[2] = 0
                     time[1] += 1
+                    document.getElementById("time").innerText = time[0]+" : "+time[1]+" : "+time[2]+" : "+time[3]
                 }
                 else if (time[1] == 60){
                     time[1] = 0
                     time[0] += 1
+                    document.getElementById("time").innerText = time[0]+" : "+time[1]+" : "+time[2]+" : "+time[3]
                 }else{
                     time[3] += 1
                     document.getElementById("time").innerText = time[0]+" : "+time[1]+" : "+time[2]+" : "+time[3]

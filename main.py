@@ -130,7 +130,6 @@ def delete():
         return redirect("/joinbeta")
     id = request.args.get("id")
     current_tasks = users.current["tasks"]
-    print(current_tasks)
     for i in range(len(current_tasks)):
         if current_tasks[i] == int(id):
             current_tasks.pop(i)
@@ -150,7 +149,6 @@ def editit():
         return redirect("/joinbeta")
     if request.method == "POST":
         id = request.args.get("id")
-        print(id)
         new_tasks = users.current["tasks"]
         title = profanity.censor(request.form["title"],censor_char="*").title()
         desc = profanity.censor(request.form["desc"],censor_char="*")
@@ -169,7 +167,6 @@ def editit():
     else:
         current_tasks = users.current["tasks"]
         id = request.args.get("id")
-        print(id)
         for i in range(len(current_tasks)):
             if current_tasks[i] == int(id):
                 title2 = current_tasks[i+1]
@@ -199,7 +196,6 @@ def new():
             return redirect("/tasks")
         else:
             return "something went wrong"
-        print(users.current["tasks"])
     return render_template("make.html", profile_pic=users.current["pic"],name=web.auth.name)
 
 @app.route("/joinbeta", methods=["POST", "GET"])
@@ -217,7 +213,6 @@ def joinbeta():
         join.append(desc)
         if len(join)%2 == 0:
             db["join"] = join
-            print(db["join"])
             return redirect("/joinbeta")
         else:
             return "something went wrong"
@@ -229,7 +224,15 @@ def beta():
     if fun.admin(web.auth.name) != True:
         return redirect("/home")
     if request.method == "POST":
-        db["beta"] = request.form["name"]
-    return render_template("beta.html", profile_pic=users.current["pic"],name=web.auth.name, tasks=db["join"][0:])
+        db["beta"].append(request.form["name"])
+    return render_template("beta.html", profile_pic=users.current["pic"],name=web.auth.name, tasks=db["join"][0:],names = db["beta"][0:])
+
+@app.route("/settings")
+@web.authenticated(login_res="<script>window.open('/','_self')</script>")
+def settings():
+    if fun.beta(web.auth.name) != True:
+        return redirect("/joinbeta")
+    return render_template("settings.html", profile_pic=users.current["pic"],name=web.auth.name)
+
 
 app.run(host='0.0.0.0', port=81,debug=True) 

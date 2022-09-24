@@ -14,22 +14,30 @@
     <body>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
         <a href="/home" style="animation-delay:0.0s;"><img src="/static/icons/toplogo.png" class="toplogo"></a>
-        <div class="home">
-            <a href="/maths" style="animation-delay:0.6s;background-image:url(/static/icons/maths.png);"></a>
-            <a href="/number" style="animation-delay:0.9s;background-image:url(/static/icons/number.png);"></a>
-            <a href="/time" style="animation-delay:1.2s;background-image:url(/static/icons/time/time.png);"></a>
-            <a href="/tasks" style="animation-delay:1.5s;background-image:url(/static/icons/tasks.png);"></a>
-            <a href="/games" style="animation-delay:1.8s;background-image:url(/static/icons/games.png);"></a>
-            <a href="/write" style="animation-delay:1.8s;background-image:url(/static/icons/write.png);"></a>
-            <a href="/settings" style="animation-delay:2.1s;background-image:url(/static/icons/settings.png);" hidden></a>
-            <a href="/admin" id="admin" style="animation-delay:2.1s;background-image:url(/static/icons/admin.png);" hidden></a>
+        <h2 id="welcome" class="welcome">Welcome</h2>
+        <div class="settings">
+            <div><h3>Color</h3><p>Pick 2 colors for the theme of Booogle It is recermend that the second color is sligtly darker then the first one.</p><label class="colorlabel" for="color1">Color 1</label><br><input type="color" class="color" name=color1><br><br><label class="colorlabel" for="color2">Color 2</label><br><input class="color" type="color" name=color2></div>
+            <div><h3>Backgound Photo</h3><p>Pick the photo that you want as you Booogle Background.</p><button class="pick">Pick a Photo</button></div>
+            <div><h3>Theme</h3></div>
+            <div><h3>Report A Bug</h3></div>
+            <div><h3>Suggest Feedback</h3></div>
         </div>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
             document.getElementById("profile").src = profile
+            const date = new Date()
+            var hour = date.getHours()
+            if (hour > 1 && hour < 11){
+                document.getElementById("welcome").innerText = "Good Morning"
+            }
+            else if(hour >= 12 && hour < 17){
+                document.getElementById("welcome").innerText = "Good Afternoon"
+            }
+            else{
+                document.getElementById("welcome").innerText = "Good Everning"
+            }
             if (name == "GoodVessel92551"){
-                //document.getElementById("admin").style.display = "block"
             }
         </script>
         <script src="static/app.js"></script>

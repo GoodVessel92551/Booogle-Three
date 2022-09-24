@@ -65,10 +65,12 @@
                 if (time[2] == 0 && time[1] != 0){
                     time[2] = 60
                     time[1] -= 1
+                    document.getElementById("time").innerHTML = time[0]+" : "+time[1]+" : "+time[2]
                 }
                 else if (time[1] == 0 && time[0] != 0){
                     time[1] = 60
                     time[0] -= 1
+                    document.getElementById("time").innerHTML = time[0]+" : "+time[1]+" : "+time[2]
                 }
                 else if (time[0] == 0 && time[1] == 0 && time[2] == 0){
                     clearInterval(id)

@@ -26,6 +26,7 @@
 }
 
 body, html{
+    overflow: overlay;
     outline:none;
     border:none;
     background-color:var(--back);
@@ -40,16 +41,27 @@ body, html{
     transition: background 1s;
 }
 
-::-webkit-scrollbar{
-    width: 10px;
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background:transparent;
+    display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    transition:.2s;
+    border-radius: 6px;
 }
 
 
-::-webkit-scrollbar-thumb{
-    background: var(--color);
-    border-radius: 3px;
-    transition:2s;
-}
+
+
 
 @keyframes load{
     from{top:0%;transform: translate(-50%, -50%) rotate(90deg) scale(0.5);opacity:.0;}
@@ -72,6 +84,7 @@ body, html{
     transform: translate(-50%, -50%);
     border:2px solid var(--border);
     animation:load 4s ease;
+    animation-delay:2s;
 
 }
 
@@ -234,6 +247,17 @@ body, html{
     from{opacity:0;top:100%;}
     to{opacity:1}
 }
+
+.rannum{
+    border-radius:10px;
+    top:200px;
+    left: 50%;
+    position:absolute;
+    transform: translate(-50%, 0%);
+    animation:load3 3s ease alternate;
+    overflow:hidden;
+    transition:.2s;
+}
 .calc{
     border-radius:10px;
     top:200px;
@@ -259,12 +283,13 @@ body, html{
     color:var(--light);
     font-size:25px;
     font-weight:bold;
-    min-width:300px;
+    width:300px;
     height:100px;
     background:var(--backborder);
     border:none;
     transition:.2s;
     text-align:right;
+    overflow-x:scroll;
 }
 
 
@@ -285,7 +310,6 @@ body, html{
 
 .but1:where(:hover, :focus){
     outline:none;
-    filter:brightness(94%);
     color:var(--color);
 }
 
@@ -306,7 +330,6 @@ body, html{
 
 .but2:where(:hover, :focus){
     outline:none;
-    filter:brightness(94%);
     color:var(--color);
 }
 
@@ -326,7 +349,6 @@ body, html{
 
 .but3:where(:hover, :focus){
     outline:none;
-    filter:brightness(94%);
     color:var(--color);
 }
 
@@ -484,7 +506,7 @@ body, html{
 .startcont{
     bottom:50px;
     left: 50%;
-    position:absolute;
+    position:fixed;
     transform: translate(-50%, 0%);
     animation:load4 3s ease alternate;
     width:100%;
@@ -897,4 +919,92 @@ body, html{
     border:2px solid var(--border);
     padding:10px;
     border-radius:5px;
+}
+
+.welcome{
+    translate:-50% 0%;
+    position:absolute;
+    background:var(--backborder);
+    border-radius:5px;
+    top:200px;
+    left:50%;
+    padding:10px;
+}
+
+.settings{
+	position:absolute;
+	left:50%;
+	top:300px;
+	display:flex;
+	justify-content:center;
+	flex-wrap:wrap;
+	translate:-50% 0%;
+	width:90%;
+	padding:10px;
+}
+
+.settings div{
+    position: relative;
+    flex-grow: 1;
+	background:var(--backborder);
+	border:2px solid var(--border);
+	border-radius:5px;
+	margin:5px;
+	padding:10px;
+	color:var(--light);
+	transition:.2s;
+	overflow-y:scroll;
+	text-decoration:none;
+	width:clamp(500px,500px,200px);
+	text-align:left;
+	height:250px;
+	cursor:pointer;
+}
+
+.settings div:where(:hover, :focus){
+	border:2px solid var(--color);
+	scale:0.98;
+    rotate:0.5deg;
+}
+
+.settings p{
+	margin-top:20px;
+}
+
+.colorlabel{
+    font-weight:700;
+}
+
+.color{
+    width:70px;
+    margin:5px 0px 0px 5px;
+    background:var(--backborder);
+    border-radius:4px;
+    border:2px solid var(--border);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.color:where(:focus, :hover){
+    border-color:var(--color);
+    scale:0.97;
+}
+
+.pick{
+    background:var(--backborder2);
+    border:2px solid var(--border2);
+    height:35px;
+    width:100px;
+    cursor:pointer;
+    color:var(--light);
+    border-radius:5px;
+    transition:.2s;
+    position:absolute;
+    bottom:10px;
+    left:10px;
+}
+
+.pick:where(:focus, :hover){
+    border-color:var(--color);
+    scale:0.97;
 }

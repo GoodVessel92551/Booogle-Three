@@ -32,13 +32,16 @@
         <form method="post" class="startcont">
             <input type="text" name="name" class="title" style="background:var(--backborder);border-color:var(--border);" required placeholder="Add to Beta">
         </form>
+        <div id="name" class="lap">
+            <h3>People In Beta</h3>
+        </div>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
-			tasksarray = {{tasks|tojson}}
-            console.log(tasksarray)
+			tasksarray = {{tasks|tojson}};
+            names = {{names|tojson}};
+            console.log(names)
 			var start = 0.3
-			console.log(tasks)
             document.getElementById("profile").src = profile
             if (tasksarray.length == 0){
                 document.getElementById("notasks").style.display = "block"
@@ -59,7 +62,13 @@
 				task.appendChild(title)
 				task.appendChild(text)
 			}
-			
+            for (var j = 0;j<names.length;j++){
+                console.log("hi")
+                var namesit = document.getElementById("name")
+                var nameit = document.createElement('a')
+                nameit.innerText = names[j]
+                namesit.appendChild(nameit)
+            }
             //document.getElementById('taskmake').showModal()
         </script>
         <script src="static/app.js"></script>
