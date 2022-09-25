@@ -1008,3 +1008,34 @@ body, html{
     border-color:var(--color);
     scale:0.97;
 }
+
+.backphotos{
+    height:80%;
+    width:clamp(1250px,80%,200px);
+    background:var(--backborder2);
+    border-radius:10px;
+    border:2px solid var(--border2);
+    transition:.2s;
+    padding:10px;
+    color:var(--light);
+}
+
+.backphotos::backdrop{
+    background:#000;
+    opacity:0.5;
+}
+
+.photos{
+    background:#fff;
+    position:absolute;
+    width:95%;
+    left:50%;
+    top:100px;
+    height:calc(100% - 100px);
+    translate:-50% 0%;
+    overflow-y:scroll;
+}
+
+.photos a{
+    
+}

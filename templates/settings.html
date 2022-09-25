@@ -16,16 +16,23 @@
         <a href="/home" style="animation-delay:0.0s;"><img src="/static/icons/toplogo.png" class="toplogo"></a>
         <h2 id="welcome" class="welcome">Welcome</h2>
         <div class="settings">
-            <div><h3>Color</h3><p>Pick 2 colors for the theme of Booogle It is recermend that the second color is sligtly darker then the first one.</p><label class="colorlabel" for="color1">Color 1</label><br><input type="color" class="color" name=color1><br><br><label class="colorlabel" for="color2">Color 2</label><br><input class="color" type="color" name=color2></div>
+            <div><h3>Color</h3><p>Pick 2 colors for the theme of Booogle It is recermend that the second color is sligtly darker then the first one.</p><button class="pick">Pick Colors</button></div>
             <div><h3>Backgound Photo</h3><p>Pick the photo that you want as you Booogle Background.</p><button class="pick">Pick a Photo</button></div>
-            <div><h3>Theme</h3></div>
-            <div><h3>Report A Bug</h3></div>
-            <div><h3>Suggest Feedback</h3></div>
+            <div><h3>Theme</h3><button class="pick">Pick a Theme</button></div>
+            <div><h3>Report A Bug</h3><button class="pick">Report A Bug</button></div>
+            <div><h3>Suggest Feedback</h3><button style="width:130px;" class="pick">Suggest Feedback</button></div>
         </div>
+        <dialog class="backphotos" id="backphotos">
+            <h2>Pick you photo</h2>
+            <div class="photos">
+                <a></a>
+            </div>
+        </dialog>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
             document.getElementById("profile").src = profile
+            document.getElementById("backphotos").showModal()
             const date = new Date()
             var hour = date.getHours()
             if (hour > 1 && hour < 11){
