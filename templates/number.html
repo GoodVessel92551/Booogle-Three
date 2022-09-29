@@ -23,6 +23,8 @@
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
+            photo = {{back|tojson}};
+            document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             document.getElementById("profile").src = profile
             function gen() {
                 min = Math.ceil(num1.value)

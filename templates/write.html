@@ -14,5 +14,9 @@
     <body>
         <iframe class="write" height="100%" src="https://booogle-write.goodvessel92551.repl.co/"></iframe>
         <script src="static/app.js"></script>
+        <script>
+            photo = {{back|tojson}};
+            document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
+        </script>
     </body>
 </html>

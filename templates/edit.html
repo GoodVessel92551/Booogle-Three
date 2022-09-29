@@ -25,7 +25,8 @@
             name = {{name|tojson}};
             title = {{title|tojson}};
             desc = {{desc|tojson}};
-            console.log(title)
+            photo = {{back|tojson}};
+            document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             document.getElementById("title").value = title
             document.getElementById("desc").innerText = desc
             document.getElementById("profile").src = profile

@@ -25,12 +25,10 @@
     }
 }
 
-body, html{
+body{
     overflow: overlay;
-    outline:none;
-    border:none;
     background-color:var(--back);
-    background-image: url(/static/background.jpg);
+    background-image: url(/static/background/rock4.jpg);
     background-position:center;
     background-repeat:no-repeat;
     background-size:cover;
@@ -41,18 +39,15 @@ body, html{
     transition: background 1s;
 }
 
-/* width */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     background:transparent;
     display: none;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: var(--border);
     transition:.2s;
@@ -84,7 +79,6 @@ body, html{
     transform: translate(-50%, -50%);
     border:2px solid var(--border);
     animation:load 4s ease;
-    animation-delay:2s;
 
 }
 
@@ -105,13 +99,13 @@ body, html{
     user-select:none;
 }
 
-.replit-auth-button:where(:hover, :focus){
+.replit-auth-button:where(:hover, :focus-visible){
     outline:none;
     filter:brightness(85%);
     transform:scale(0.95);
 }
 
-.welcome{
+.welcome_login{
     margin:10px;
     color:var(--light);
 }
@@ -165,7 +159,7 @@ body, html{
     
 }
 
-.home a:where(:hover, :focus){
+.home a:where(:hover, :focus-visible){
     outline:none;
     transform:scale(0.97);
     box-shadow:none;
@@ -191,7 +185,7 @@ body, html{
 
 }
 
-.toplogo:where(:hover, :focus){
+.toplogo:where(:hover, :focus-visible){
     outline:none;
     transform:scale(0.97);
     box-shadow:none;
@@ -235,7 +229,7 @@ body, html{
     }
 }
 
-.pic:where(:hover, :focus){
+.pic:where(:hover, :focus-visible){
     outline:none;
     transform:scale(0.97);
     box-shadow:none;
@@ -270,7 +264,7 @@ body, html{
     transition:.2s;
 }
 
-.calc:where(:hover, :focus){
+.calc:where(:hover, :focus-visible){
     outline:none;
     border-color:var(--color);
 }
@@ -308,7 +302,7 @@ body, html{
     overflow:hidden;
 }
 
-.but1:where(:hover, :focus){
+.but1:where(:hover, :focus-visible){
     outline:none;
     color:var(--color);
 }
@@ -328,7 +322,7 @@ body, html{
     overflow:hidden;
 }
 
-.but2:where(:hover, :focus){
+.but2:where(:hover, :focus-visible){
     outline:none;
     color:var(--color);
 }
@@ -347,7 +341,7 @@ body, html{
     color:var(--light);
 }
 
-.but3:where(:hover, :focus){
+.but3:where(:hover, :focus-visible){
     outline:none;
     color:var(--color);
 }
@@ -392,7 +386,7 @@ body, html{
     font-weight:700;
 }
 
-.number:where(:hover, :focus),.numgo:where(:hover, :focus){
+.number:where(:hover, :focus-visible),.numgo:where(:hover, :focus-visible){
     outline:none;
     border-color:var(--color);
     transform:scale(0.98);
@@ -523,7 +517,7 @@ body, html{
     transition:.2s;
 }
 
-.start:where(:hover, :focus){
+.start:where(:hover, :focus-visible){
     outline:none;
     border-color:var(--color);
     transform: scale(0.98);
@@ -561,7 +555,7 @@ body, html{
     transition:.2s;
 }
 
-.textbox:where(:hover, :focus){
+.textbox:where(:hover, :focus-visible){
     outline:none;
     border-color:var(--color2);
     transform:scale(0.98);
@@ -585,7 +579,7 @@ body, html{
     transition:.2s;
 }
 
-.desc:where(:hover, :focus){
+.desc:where(:hover, :focus-visible){
     outline:none;
     border-color:var(--color2);
     transform:scale(0.98);
@@ -610,7 +604,7 @@ body, html{
     cursor:pointer;
 }
 
-.submit:where(:hover, :focus){
+.submit:where(:hover, :focus-visible){
     outline:none;
     border-color:var(--color2);
     transform:scale(0.98);
@@ -640,7 +634,7 @@ body, html{
     transition:.2s;
 }
 
-.close:where(:hover, :focus){
+.close:where(:hover, :focus-visible){
     outline:none;
     border-color:var(--color);
     transform:scale(0.9);
@@ -693,7 +687,7 @@ body, html{
     animation:load2 3s ease alternate;
 }
 
-.games a:where(:hover, :focus){
+.games a:where(:hover, :focus-visible){
     outline:none;
     border-color:var(--color);
     box-shadow:none;
@@ -770,7 +764,7 @@ body, html{
     border:2px solid var(--color2);
 }
 
-.send:where(:hover, :focus){
+.send:where(:hover, :focus-visible){
     outline:none;
     filter:brightness(85%);
     transform:scale(0.98);
@@ -806,7 +800,7 @@ body, html{
 	cursor:pointer;
 }
 
-.tasks a:where(:hover, :focus):not(.delit){
+.tasks a:where(:hover, :focus-visible):not(.delit){
 	border-color:var(--color);
 	transform:scale(0.98);
 }
@@ -844,6 +838,7 @@ body, html{
     font-size:16px;
     position:relative;
     top:3px;
+    left:-3px;
 }
 
 .editit{
@@ -878,21 +873,22 @@ body, html{
     transition:.2s;
 }
 
-#del:where(:hover, :focus){
+#del:where(:hover, :focus-visible){
     outline:none;
     border-color:#db0000;
     color:#db0000;
     scale:0.95;
 }
 
-#ed:where(:hover, :focus){
+#ed:where(:hover, :focus-visible){
     outline:none;
     border-color:#30910d;
     color:#30910d;
     scale:0.95;
 }
 
-#cancel:where(:hover, :focus){
+
+#cancel:where(:hover, :focus-visible){
     outline:none;
     border-color:var(--color);
     color:var(--color);
@@ -961,7 +957,8 @@ body, html{
 	cursor:pointer;
 }
 
-.settings div:where(:hover, :focus){
+.settings div:where(:hover, :focus-visible){
+    outline:none;
 	border:2px solid var(--color);
 	scale:0.98;
     rotate:0.5deg;
@@ -985,7 +982,7 @@ body, html{
     transition:.2s;
 }
 
-.color:where(:focus, :hover){
+.color:where(:hover, :focus-visible){
     border-color:var(--color);
     scale:0.97;
 }
@@ -1004,7 +1001,8 @@ body, html{
     left:10px;
 }
 
-.pick:where(:focus, :hover){
+.pick:where(:hover, :focus-visible){
+    outline:none;
     border-color:var(--color);
     scale:0.97;
 }
@@ -1018,6 +1016,7 @@ body, html{
     transition:.2s;
     padding:10px;
     color:var(--light);
+    overflow:hidden;
 }
 
 .backphotos::backdrop{
@@ -1026,16 +1025,68 @@ body, html{
 }
 
 .photos{
-    background:#fff;
+    padding:10px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
     position:absolute;
-    width:95%;
+    width:calc(100% - 30px);
     left:50%;
     top:100px;
-    height:calc(100% - 100px);
+    height:calc(100% - 150px);
     translate:-50% 0%;
     overflow-y:scroll;
 }
 
-.photos a{
-    
+.photos:focus{
+    outline:none;
+}
+
+.backgroundpick{
+    background-color:var(--backborder2);
+    height:200px;
+    width:200px;
+    border-radius:3px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+    margin:7px;
+    border:none;
+    float:left;
+    cursor:pointer;
+    transition:.2s;
+    outline:none;
+}
+
+.backgroundpick:where(:hover, :focus-visible){
+    filter: brightness(90%);
+    outline:2px solid var(--color);
+}
+.backgroundpick:focus{
+    outline:2px solid var(--color);
+}
+
+.closebut{
+    position:absolute;
+    bottom:10px;
+    right:15px;
+    z-index:2;
+}
+
+.color_text{
+    display:block;
+    margin-top:10px;
+    width:400px;
+    height:150px;
+}
+
+.pickcolor{
+    padding:none;
+    background:hidden;
+    border:none;
+    height:20px;
+    width:100px;
+    border-radius:5px;
+    box-shadow:3px 3px 3px rgba(0,0,0,0.3);
 }

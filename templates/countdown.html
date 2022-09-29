@@ -44,6 +44,8 @@
             name = {{name|tojson}};
             document.getElementById("profile").src = profile
             time = {{time|tojson}};
+            photo = {{back|tojson}};
+            document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             let start2 = true
             var id
             document.getElementById("time").innerText = time[0]+" : "+time[1]+" : "+time[2]

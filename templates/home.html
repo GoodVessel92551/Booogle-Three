@@ -27,6 +27,8 @@
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
+            photo = {{back|tojson}};
+            document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             document.getElementById("profile").src = profile
             if (name == "GoodVessel92551"){
                 //document.getElementById("admin").style.display = "block"

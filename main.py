@@ -19,11 +19,12 @@ def home():
         return redirect("/joinbeta")
     users.current["pic"] = request.headers["X-Replit-User-Profile-Image"]
     if web.auth.name not in db["names"]:
+        users.current["photo"] = "rock4"
         users.current["tasks"] = []
         users.current["id"] = 0
         users.current["time"] = ["0","10","0"]
         db["names"].append(web.auth.name)
-    return render_template("home.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("home.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 
 @app.route("/maths")
@@ -31,28 +32,28 @@ def home():
 def maths():
     if fun.beta(web.auth.name) != True:
         return redirect("/joinbeta")
-    return render_template("maths.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("maths.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/number")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def number():
     if fun.beta(web.auth.name) != True:
         return redirect("/joinbeta")
-    return render_template("number.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("number.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/time")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def time():
     if fun.beta(web.auth.name) != True:
         return redirect("/joinbeta")
-    return render_template("time.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("time.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/current")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def current():
     if fun.beta(web.auth.name) != True:
         return redirect("/joinbeta")
-    return render_template("current.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("current.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/countdown-timer" , methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
@@ -73,21 +74,21 @@ def countdown():
             elif int(hours) < 0 or int(min) < 0 or int(sec) < 0:
                 return "Number to small"
             users.current["time"] = [hours,min,sec]
-    return render_template("countdown.html", profile_pic=users.current["pic"],name=web.auth.name, time=users.current["time"][0:])
+    return render_template("countdown.html", profile_pic=users.current["pic"],name=web.auth.name, time=users.current["time"][0:],back=users.current["photo"])
 
 @app.route("/write")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def write():
     if fun.beta(web.auth.name) != True:
         return redirect("/joinbeta")
-    return render_template("write.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("write.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/stopwatch")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def stopwatch():
     if fun.beta(web.auth.name) != True:
         return redirect("/joinbeta")
-    return render_template("stopwatch.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("stopwatch.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/tasks" , methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
@@ -96,28 +97,28 @@ def tasks():
         return redirect("/joinbeta")
     if request.method == "POST":
         pass
-    return render_template("tasks.html", profile_pic=users.current["pic"],name=web.auth.name, time=users.current["time"][0:], tasks=users.current["tasks"][0:])
+    return render_template("tasks.html", profile_pic=users.current["pic"],name=web.auth.name, time=users.current["time"][0:], tasks=users.current["tasks"][0:],back=users.current["photo"])
 
 @app.route("/games")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def games():
     if fun.beta(web.auth.name) != True:
         return redirect("/joinbeta")
-    return render_template("games.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("games.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/play")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def play():
     if fun.beta(web.auth.name) != True:
         return redirect("/joinbeta")
-    return render_template("play.html", profile_pic=users.current["pic"],name=web.auth.name,game=request.args.get("game"))
+    return render_template("play.html", profile_pic=users.current["pic"],name=web.auth.name,game=request.args.get("game"),back=users.current["photo"])
 
 @app.route("/edit", methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def edit():
     if fun.beta(web.auth.name) != True:
         return redirect("/joinbeta")
-    return render_template("edit.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("edit.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/sw.js", methods=["GET"])
 def sw():
@@ -171,7 +172,7 @@ def editit():
             if current_tasks[i] == int(id):
                 title2 = current_tasks[i+1]
                 desc2 = current_tasks[i+2]
-                return render_template("edit.html", profile_pic=users.current["pic"],name=web.auth.name,title=title2,desc=desc2)
+                return render_template("edit.html", profile_pic=users.current["pic"],name=web.auth.name,title=title2,desc=desc2,back=users.current["photo"])
         return redirect("/new")
 
 @app.route('/new' , methods=["POST", "GET"])
@@ -196,7 +197,7 @@ def new():
             return redirect("/tasks")
         else:
             return "something went wrong"
-    return render_template("make.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("make.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/joinbeta", methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
@@ -216,7 +217,7 @@ def joinbeta():
             return redirect("/joinbeta")
         else:
             return "something went wrong"
-    return render_template("joinbeta.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("joinbeta.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/admin/beta" , methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
@@ -225,14 +226,23 @@ def beta():
         return redirect("/home")
     if request.method == "POST":
         db["beta"].append(request.form["name"])
-    return render_template("beta.html", profile_pic=users.current["pic"],name=web.auth.name, tasks=db["join"][0:],names = db["beta"][0:])
+    return render_template("beta.html", profile_pic=users.current["pic"],name=web.auth.name, tasks=db["join"][0:],names = db["beta"][0:],back=users.current["photo"])
 
 @app.route("/settings")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def settings():
     if fun.beta(web.auth.name) != True:
         return redirect("/joinbeta")
-    return render_template("settings.html", profile_pic=users.current["pic"],name=web.auth.name)
+    return render_template("settings.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
+@app.route("/background/pick", methods=["GET", "POST"])
+@web.authenticated
+def pick():
+    if request.method == "POST":
+        photo = request.args.get("photo")
+        print(photo)
+        users.current["photo"] = photo
+        print(users.current["photo"])
+    return redirect("/settings")
 
 app.run(host='0.0.0.0', port=81,debug=True) 

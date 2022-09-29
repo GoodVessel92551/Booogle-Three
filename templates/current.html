@@ -19,6 +19,8 @@
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
+            photo = {{back|tojson}};
+            document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             document.getElementById("profile").src = profile
             var id = setInterval(time, 1000)
             var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]

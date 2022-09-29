@@ -4,15 +4,6 @@
         <title>Booogle</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel = "icon" href = "static/logo.png" type = "image/x-icon">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect<!DOCTYPE html>
-<html lang="en-GB">
-    <head>
-        <title>Booogle</title>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel = "icon" href = "/static/logo.png" type = "image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +40,9 @@
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
-			tasksarray = {{tasks|tojson}}
+			tasksarray = {{tasks|tojson}};
+            photo = {{back|tojson}};
+            document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
 			var start = 0.3
 			console.log(tasks)
             document.getElementById("profile").src = profile

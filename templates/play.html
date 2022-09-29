@@ -19,6 +19,8 @@
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
             game = {{game|tojson}};
+            photo = {{back|tojson}};
+            document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             document.getElementById("profile").src = profile
             console.log(game)
             if (game == "parkour"){

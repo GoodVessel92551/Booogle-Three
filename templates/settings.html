@@ -10,29 +10,88 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
         <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
         <a href="/home" style="animation-delay:0.0s;"><img src="/static/icons/toplogo.png" class="toplogo"></a>
         <h2 id="welcome" class="welcome">Welcome</h2>
         <div class="settings">
-            <div><h3>Color</h3><p>Pick 2 colors for the theme of Booogle It is recermend that the second color is sligtly darker then the first one.</p><button class="pick">Pick Colors</button></div>
-            <div><h3>Backgound Photo</h3><p>Pick the photo that you want as you Booogle Background.</p><button class="pick">Pick a Photo</button></div>
+            <div><h3>Color</h3><p>Pick 2 colors for the theme of Booogle It is recermend that the second color is sligtly darker then the first one.</p><button class="pick" onclick="document.getElementById('colorit').showModal()">Pick Colors</button></div>
+            <div><h3>Backgound Photo</h3><p>Pick the photo that you want as you Booogle Background.</p><button onclick="document.getElementById('backphotos').showModal()" class="pick">Pick a Photo</button></div>
             <div><h3>Theme</h3><button class="pick">Pick a Theme</button></div>
             <div><h3>Report A Bug</h3><button class="pick">Report A Bug</button></div>
             <div><h3>Suggest Feedback</h3><button style="width:130px;" class="pick">Suggest Feedback</button></div>
         </div>
         <dialog class="backphotos" id="backphotos">
-            <h2>Pick you photo</h2>
+            <h2 style="margin:10px;margin-top:40px;">Pick Your Photo</h2>
+            <button onclick="document.getElementById('backphotos').close()" class="edititbutton closebut" id="cancel"><span class="icon">close</span>Close</button>
+            <div class="photos" id="photodiv">
+                <form method="post" action="/background/pick?photo=bush"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/bush.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flowers"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flowers.jpg);"></form>
+                <form method="post" action="/background/pick?photo=grass"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/grass.jpg);"></form>
+                <form method="post" action="/background/pick?photo=leaf"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/leaf.jpg);"></form>
+                <form method="post" action="/background/pick?photo=wall"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/wall.jpg);"></form>
+                <form method="post" action="/background/pick?photo=wall2"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/wall2.jpg);"></form>
+                <form method="post" action="/background/pick?photo=water"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/water.jpg);"></form>
+                <form method="post" action="/background/pick?photo=fern"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/fern.jpg);"></form>
+                <form method="post" action="/background/pick?photo=fern2"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/fern2.jpg);"></form>
+                <form method="post" action="/background/pick?photo=fern3"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/fern3.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower2"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower2.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower3"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower3.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower4"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower4.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower5"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower5.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower6"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower6.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flowers2"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flowers2.jpg);"></form>
+                <form method="post" action="/background/pick?photo=leaf2"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/leaf2.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock.jpg);"></form>
+                <form method="post" action="/background/pick?photo=waterfall"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/waterfall.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower7"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower7.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower8"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower8.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower9"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower9.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower10"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower10.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower11"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower11.jpg);"></form>
+                <form method="post" action="/background/pick?photo=flower12"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/flower12.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock3"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock3.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock4"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock4.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock5"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock5.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock6"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock6.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock7"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock7.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock8"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock8.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock9"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock9.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock10"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock10.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock11"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock11.jpg);"></form>
+                <form method="post" action="/background/pick?photo=rock12"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/rock12.jpg);"></form>
+                <form method="post" action="/background/pick?photo=grass2"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/grass2.jpg);"></form>
+                <form method="post" action="/background/pick?photo=green"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/green.jpg);"></form>
+                <form method="post" action="/background/pick?photo=green2"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/green2.jpg);"></form>
+                <form method="post" action="/background/pick?photo=floor"><input type="submit" value="" class="backgroundpick" style="background-image: url(/static/background_low/floor.jpg);"></form>
+            </div>
+        </dialog>
+        <dialog class="backphotos" id="colorit">
+            <h2 style="margin:10px;margin-top:40px;">Pick A Color</h2>
+            <button onclick="document.getElementById('colorit').close()" class="edititbutton closebut" id="cancel"><span class="icon">close</span>Close</button>
             <div class="photos">
-                <a></a>
+                <div class="color_text">
+                    <h3>Color 1</h3>
+                    <p>This is the main color that Booogle uses.</p>
+                    <input type="color" name="color1" class="pickcolor" value="#ff6600">
+                </div>
+                <div class="color_text">
+                    <h3>Color 2</h3>
+                    <p>This is the secondery color that Booogle user it is recommended that this is slightly darker than color 1.</p>
+                    <input type="color" name="color2" class="pickcolor" value="#ff6600">
+                </div>
             </div>
         </dialog>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
+            photo = {{back|tojson}};
+            document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             document.getElementById("profile").src = profile
-            document.getElementById("backphotos").showModal()
+            document.getElementById("photodiv").removeAttribute("tabIndex");
             const date = new Date()
             var hour = date.getHours()
             if (hour > 1 && hour < 11){
