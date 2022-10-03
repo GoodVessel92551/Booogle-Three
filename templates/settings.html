@@ -17,11 +17,8 @@
         <a href="/home" style="animation-delay:0.0s;"><img src="/static/icons/toplogo.png" class="toplogo"></a>
         <h2 id="welcome" class="welcome">Welcome</h2>
         <div class="settings">
-            <div><h3>Color</h3><p>Pick 2 colors for the theme of Booogle It is recermend that the second color is sligtly darker then the first one.</p><button class="pick" onclick="document.getElementById('colorit').showModal()">Pick Colors</button></div>
-            <div><h3>Backgound Photo</h3><p>Pick the photo that you want as you Booogle Background.</p><button onclick="document.getElementById('backphotos').showModal()" class="pick">Pick a Photo</button></div>
-            <div><h3>Theme</h3><button class="pick">Pick a Theme</button></div>
-            <div><h3>Report A Bug</h3><button class="pick">Report A Bug</button></div>
-            <div><h3>Suggest Feedback</h3><button style="width:130px;" class="pick">Suggest Feedback</button></div>
+            <div><h3>Backgound Photo</h3><p>Pick the photo that you want as you Booogle Background. More will be added.</p><button onclick="document.getElementById('backphotos').showModal()" class="pick">Pick a Photo</button></div>
+            <div><h3>Suggest Feedback/Report A Bug</h3><p>Suggest feedback or report a bug</p><button style="width:130px;" class="pick" onclick="document.getElementById('feedback').showModal()">Suggest/Report</button></div>
         </div>
         <dialog class="backphotos" id="backphotos">
             <h2 style="margin:10px;margin-top:40px;">Pick Your Photo</h2>
@@ -72,18 +69,32 @@
         <dialog class="backphotos" id="colorit">
             <h2 style="margin:10px;margin-top:40px;">Pick A Color</h2>
             <button onclick="document.getElementById('colorit').close()" class="edititbutton closebut" id="cancel"><span class="icon">close</span>Close</button>
-            <div class="photos">
+            <form method="post" action="/settings/color" class="photos">
                 <div class="color_text">
                     <h3>Color 1</h3>
-                    <p>This is the main color that Booogle uses.</p>
-                    <input type="color" name="color1" class="pickcolor" value="#ff6600">
+                    <p>This is the main color that Booogle uses. It is recommended not to pick a dark color.</p>
+                    <a class="pick_pos"><input type="color" name="color1" class="pickcolor" value="#ff6600"></a>
                 </div>
                 <div class="color_text">
                     <h3>Color 2</h3>
                     <p>This is the secondery color that Booogle user it is recommended that this is slightly darker than color 1.</p>
-                    <input type="color" name="color2" class="pickcolor" value="#ff6600">
+                    <a class="pick_pos"><input type="color" name="color2" class="pickcolor" value="#ff6600"></a>
                 </div>
-            </div>
+                <div class="color_save_pos">
+                    <input type="submit" class="color_save" style="border-radius:5px 2px 2px 5px;">
+                    <input type="button" value="Reset" class="color_save" style="border-radius:2px 5px 5px 2px;" onclick="window.open('/settings/color/reset','_self')">
+                </div>
+            </form>
+        </dialog>
+        <dialog class="backphotos" id="feedback">
+            <h2 style="margin:10px;margin-top:40px;">Suggest/Report</h2>
+            <p>You can make a bug report of feedback suggestion. If you make a bug report make sure to give steps on how to reproduce it.<br>If making a suggestion make sure to include detail on why you want it.</p>
+            <form method="post" action="/feedback" class="report">
+                <input class="title" name="title" required>
+                <textarea class="title" name="desc" style="height:150px;" required></textarea>
+                <input type="submit" value="Submit" class="send">
+            </form>
+            <button onclick="document.getElementById('feedback').close()" class="edititbutton closebut" id="cancel"><span class="icon">close</span>Close</button>
         </dialog>
         <script>
             profile = {{profile_pic|tojson}};
@@ -91,18 +102,11 @@
             photo = {{back|tojson}};
             document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             document.getElementById("profile").src = profile
-            document.getElementById("photodiv").removeAttribute("tabIndex");
             const date = new Date()
             var hour = date.getHours()
-            if (hour > 1 && hour < 11){
-                document.getElementById("welcome").innerText = "Good Morning"
-            }
-            else if(hour >= 12 && hour < 17){
-                document.getElementById("welcome").innerText = "Good Afternoon"
-            }
-            else{
-                document.getElementById("welcome").innerText = "Good Everning"
-            }
+            if (hour > 0 && hour < 12) document.getElementById("welcome").innerText = "Good Morning"
+            else if(hour >= 12 && hour < 18) document.getElementById("welcome").innerText = "Good Afternoon"
+            else document.getElementById("welcome").innerText = "Good Everning"
             if (name == "GoodVessel92551"){
             }
         </script>

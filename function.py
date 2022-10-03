@@ -1,5 +1,4 @@
 from replit import db
-print(db["beta"])
 def beta(name):
     if name in db["beta"]:
         return True

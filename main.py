@@ -2,6 +2,7 @@ from better_profanity import profanity
 import function as fun
 from flask import Flask, render_template, redirect, request, current_app
 from replit import web, db
+import random
 app = Flask(__name__)
 users = web.UserStore()
 @app.route("/")
@@ -217,7 +218,7 @@ def joinbeta():
             return redirect("/joinbeta")
         else:
             return "something went wrong"
-    return render_template("joinbeta.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
+    return render_template("joinbeta.html",name=web.auth.name)
 
 @app.route("/admin/beta" , methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
@@ -225,7 +226,8 @@ def beta():
     if fun.admin(web.auth.name) != True:
         return redirect("/home")
     if request.method == "POST":
-        db["beta"].append(request.form["name"])
+        if web.auth.name not in db["beta"]:
+            db["beta"].append(request.form["name"])
     return render_template("beta.html", profile_pic=users.current["pic"],name=web.auth.name, tasks=db["join"][0:],names = db["beta"][0:],back=users.current["photo"])
 
 @app.route("/settings")
@@ -244,5 +246,56 @@ def pick():
         users.current["photo"] = photo
         print(users.current["photo"])
     return redirect("/settings")
+
+@app.route("/feedback", methods=["GET", "POST"])
+@web.authenticated
+def feedback():
+    if request.method == "POST":
+        title = profanity.censor(request.form["title"])
+        desc = profanity.censor(request.form["desc"])
+        id = random.randint(1, 100000)
+        db["feedback"].append(id)
+        db["feedback"].append(title)
+        db["feedback"].append(desc)
+    return redirect("/settings")
+
+@app.route("/admin/feedback" , methods=["POST", "GET"])
+@web.authenticated(login_res="<script>window.open('/','_self')</script>")
+def adminfeedback():
+    if fun.admin(web.auth.name) != True:
+        return redirect("/home")
+    if request.method == "POST":
+        pass
+    return render_template("admin_feed.html", profile_pic=users.current["pic"],name=web.auth.name, time=users.current["time"][0:], tasks=db["feedback"][0:],back=users.current["photo"])
+
+@app.route('/admin/feedback/delete')
+@web.authenticated(login_res="<script>window.open('/','_self')</script>")
+def adminfeedbackdel():
+    if fun.admin(web.auth.name) != True:
+        return redirect("/home")
+    id = request.args.get("id")
+    current_tasks = db["feedback"]
+    for i in range(len(current_tasks)):
+        if current_tasks[i] == int(id):
+            current_tasks.pop(i)
+            current_tasks.pop(i)
+            current_tasks.pop(i)
+            break
+    if len(current_tasks)%3 == 0:
+        db["feedback"] = current_tasks
+        return redirect("/admin/feedback")
+    else:
+        return "something went wrong"
+
+@app.route("/ping" , methods=["POST", "GET"])
+def ping():
+    return "ping!"
+
+@app.route('/admin')
+@web.authenticated(login_res="<script>window.open('/','_self')</script>")
+def admin():
+    if fun.admin(web.auth.name) != True:
+        return redirect("/home")
+    return db["names"][0:]
 
 app.run(host='0.0.0.0', port=81,debug=True) 

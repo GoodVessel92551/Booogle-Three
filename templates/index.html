@@ -14,10 +14,26 @@
     </head>
     <body>
         <div class="login">
-            <h1 class="welcome_login">Welcome To Booogle 3</h1>
+            <h1 class="welcome_login">Welcome To <span id="text" class="typing"></span></h1>
             <span class="need">You Will Need To Login With Replit To Use Booogle 3</span>
             <button onclick="LoginWithReplit()" class="replit-auth-button">Login With Replit</button>
         </div>
+        <script>
+            var text = "Booogle‎3"
+            var num = 0
+            var element = document.getElementById("text")
+            var timeout = setInterval(type,500)
+            function type() {
+                console.log(text[num])
+                if (num === 7) {
+                    element.innerHTML += " ‎"
+                    console.log("space")
+                }
+                element.innerText += text[num]
+                num++
+                if (num == text.length) clearTimeout(timeout)
+            }
+        </script>
         <script src="static/app.js"></script>
         <script src="https://replit.com/public/js/replit-badge.js" theme="orange" defer></script>
     </body>

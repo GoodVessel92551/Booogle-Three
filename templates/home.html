@@ -21,7 +21,7 @@
             <a href="/tasks" style="animation-delay:1.5s;background-image:url(/static/icons/tasks.png);"></a>
             <a href="/games" style="animation-delay:1.8s;background-image:url(/static/icons/games.png);"></a>
             <a href="/write" style="animation-delay:1.8s;background-image:url(/static/icons/write.png);"></a>
-            <a href="/settings" style="animation-delay:2.1s;background-image:url(/static/icons/settings.png);" hidden></a>
+            <a href="/settings" style="animation-delay:2.1s;background-image:url(/static/icons/settings.png);"></a>
             <a href="/admin" id="admin" style="animation-delay:2.1s;background-image:url(/static/icons/admin.png);" hidden></a>
         </div>
         <script>
@@ -31,7 +31,7 @@
             document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             document.getElementById("profile").src = profile
             if (name == "GoodVessel92551"){
-                //document.getElementById("admin").style.display = "block"
+                document.getElementById("admin").style.display = "block"
             }
         </script>
         <script src="static/app.js"></script>
