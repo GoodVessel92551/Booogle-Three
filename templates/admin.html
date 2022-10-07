@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <title>Booogle</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel = "icon" href = "static/logo.png" type = "image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
+        <meta name="theme-color" id="theme" content="#ff6600">
+        <link rel="manifest" href="/static/manifest.json">
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
+        <a href="/home" style="animation-delay:0.0s;"><img src="/static/icons/toplogo.png" class="toplogo"></a>
+        <div class="home">
+            <div class="admin"><p class="admin_users">Users</p><b class="admin_count" id="users">17</b><b class="admin_count_it" id="users_count"><span class="icon">trending_flat</span> 0</b></div>
+            <div class="admin"><p class="admin_users">Open Mail</p><b class="admin_count" id="mail">20</b><b class="admin_count_it" id="mail_count"><span class="icon">trending_flat</span> 0</b></div>
+            <div class="admin"><p class="admin_users">Open ReplTask</p><b class="admin_count" id="repltask">78</b><b class="admin_count_it" id="repltask_count"><span class="icon">trending_flat</span> 0</b></div>
+            <div onclick="window.open('/admin/feedback','_self')" class="admin"><p class="admin_users">Feedback</p><b class="admin_count" id="feedback">78</b><b class="admin_count_it" id="feedback_count"><span class="icon">trending_flat</span> 0</b></div>
+        </div>
+        <script>
+            profile = {{profile_pic|tojson}};
+            name = {{name|tojson}};
+            photo = {{back|tojson}};
+            names = {{names|tojson}};
+            mail = {{mail|tojson}};
+            feedback = {{feedback|tojson}};
+            repltask = {{repltask|tojson}};
+            var old_users = localStorage.getItem("users")
+            var old_mail = localStorage.getItem("mail")
+            var old_repltask = localStorage.getItem("repltask")
+            var old_feedback = localStorage.getItem("feedback")
+            localStorage.setItem("users",names.length)
+            localStorage.setItem("feedback",feedback.length/3)
+            localStorage.setItem("mail",mail)
+            localStorage.setItem("repltask",repltask)
+            var users_diff = names.length - old_users
+            var mail_diff = mail - old_mail
+            var repltask_diff = repltask - old_repltask
+            var feedback_diff = feedback - old_feedback
+            if (users_diff > 0){
+                document.getElementById("users_count").innerHTML = '<span class="icon">trending_up</span> +'+users_diff
+                document.getElementById("users_count").style.color = "var(--green)"
+            }
+            if(mail_diff > 0){
+                document.getElementById("mail_count").innerHTML = '<span class="icon">trending_up</span> +'+mail_diff
+                document.getElementById("mail_count").style.color = "var(--green)"
+            }
+            if(repltask_diff > 0){
+                document.getElementById("repltask_count").innerHTML = '<span class="icon">trending_up</span> +'+repltask_diff
+                document.getElementById("repltask_count").style.color = "var(--green)"
+            }
+            if(feedback_diff > 0){
+                document.getElementById("feedback_count").innerHTML = '<span class="icon">trending_up</span> +'+feedback_diff
+                document.getElementById("feedback_count").style.color = "var(--green)"
+            }
+            document.getElementById("users").innerText = names.length
+            document.getElementById("feedback").innerText = feedback.length/3
+            document.getElementById("mail").innerText = mail
+            document.getElementById("repltask").innerText = repltask
+            document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
+            document.getElementById("profile").src = profile
+        </script>
+        <script src="static/app.js"></script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "short_name": "Booogle 3",
+  "name": "Booogle Three",
+  "icons": [
+    {
+      "src": "manifest/Booogle_Logo_520.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "manifest/Booogle_Logo_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "manifest/Logo_2_520.png",
+      "type": "image/png",
+      "sizes": "520x520",
+      "purpose": "maskable" 
+    }
+  ],
+
+  "start_url": "/",
+  "background_color": "#202124",
+  "display": "minimal-ui",
+  "scope": "/",
+  "theme_color": "#ff6600",
+  "shortcuts": [
+    {
+      "name": "Tasks",
+      "short_name": "Tasks",
+      "description": "Booogle",
+      "url": "/tasks",
+      "icons": [{ "src": "manifest/Logo_2_520.png", "sizes": "512x512" }]
+    },
+    {
+      "name": "Calculator",
+      "short_name": "Calculator",
+      "description": "Booogle",
+      "url": "/maths",
+      "icons": [{ "src": "manifest/Logo_2_520.png", "sizes": "512x512" }]
+    }
+  ],
+  "description": "Booogle",
+  "screenshots": [
+    {
+      "src": "manifest/Booogle_Logo_520.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

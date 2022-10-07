@@ -226,7 +226,7 @@ def beta():
     if fun.admin(web.auth.name) != True:
         return redirect("/home")
     if request.method == "POST":
-        if web.auth.name not in db["beta"]:
+        if request.form["name"] not in db["beta"]:
             db["beta"].append(request.form["name"])
     return render_template("beta.html", profile_pic=users.current["pic"],name=web.auth.name, tasks=db["join"][0:],names = db["beta"][0:],back=users.current["photo"])
 
@@ -296,6 +296,21 @@ def ping():
 def admin():
     if fun.admin(web.auth.name) != True:
         return redirect("/home")
-    return db["names"][0:]
+    return render_template("admin.html", profile_pic=users.current["pic"],name=web.auth.name ,back=users.current["photo"],names=db["names"][0:],mail = db["mail"], repltask = db["repltask"], feedback = db["feedback"][0:])
 
+@app.route('/open')
+@web.authenticated(login_res="<script>window.open('/','_self')</script>")
+def open():
+    app = request.args.get("app")
+    print(db["repltask"])
+    if app == "mail":
+        db["mail"] += 1
+        return redirect("https://booogle-mail.goodvessel92551.repl.co/")
+    elif app == "repltask":
+        db["repltask"] += 1
+        return redirect("https://repltask.goodvessel92551.repl.co/")
+
+@app.route("/offline")
+def offline():
+    return render_template("offline.html")
 app.run(host='0.0.0.0', port=81,debug=True) 

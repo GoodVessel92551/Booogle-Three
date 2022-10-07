@@ -11,6 +11,8 @@
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
         <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <meta name="theme-color" id="theme" content="#ff6600">
+        <link rel="manifest" href="/static/manifest.json">
     </head>
     <body>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
@@ -89,6 +91,8 @@
         <dialog class="backphotos" id="feedback">
             <h2 style="margin:10px;margin-top:40px;">Suggest/Report</h2>
             <p>You can make a bug report of feedback suggestion. If you make a bug report make sure to give steps on how to reproduce it.<br>If making a suggestion make sure to include detail on why you want it.</p>
+            <div class="showcase" style="left:30px;" ><img class="showcase_img" onclick="window.open('/open?app=mail')" src="/static/mail.png"><a class="showcase_p">Check Out Booogle Mail</a></div>
+            <div class="showcase" style="right:30px;" ><img class="showcase_img" onclick="window.open('/open?app=repltask')" src="/static/repltask.png"><a class="showcase_p">Check Out ReplTask</a></div>
             <form method="post" action="/feedback" class="report">
                 <input class="title" name="title" required>
                 <textarea class="title" name="desc" style="height:150px;" required></textarea>

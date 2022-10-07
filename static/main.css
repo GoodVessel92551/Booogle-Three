@@ -9,6 +9,9 @@
         --back:#202124;
         --color:#ff6600;
         --color2:#cc5200;
+        --border3:#737373;
+        --back2:#3d3d3d;
+        --green:#27b300;
     }
 }
 @media (prefers-color-scheme: light){
@@ -22,6 +25,9 @@
         --back:#fff;
         --color:#ff6600;
         --color2:#cc5200;
+        --border3:#737373;
+        --back2:#c9c9c9;
+        --green:#27b300;
     }
 }
 
@@ -150,7 +156,7 @@ body{
     to{}
 }
 
-.home a{
+.home a:not(.admin){
     height:200px;
     width:200px;
     background-color:var(--color);
@@ -170,7 +176,7 @@ body{
     
 }
 
-.home a:where(:hover, :focus-visible){
+.home a:where(:hover, :focus-visible):not(.admin){
     outline:none;
     transform:scale(0.97);
     box-shadow:none;
@@ -1073,7 +1079,6 @@ body{
 
 .backgroundpick:where(:hover, :focus-visible){
     filter: brightness(90%);
-    outline:2px solid var(--color);
 }
 .backgroundpick:focus{
     outline:2px solid var(--color);
@@ -1148,4 +1153,93 @@ body{
     justify-content:center;
     position:absolute;
     flex-wrap:wrap;
+}
+
+.showcase{
+    position:absolute;
+    top:200px;
+    height:200px;
+    width:280px;
+    border-radius:8px;
+    border:1px solid var(--border3);
+    transition:.2s;
+    cursor:pointer;
+    overflow:hidden;
+    box-shadow:3px 3px 3px rgba(0,0,0,0.4);
+}
+
+.showcase_img{
+    width:100%;
+    height:100%;
+    transition:.2s;
+    overflow:hidden;
+}
+
+.showcase_p{
+    color:#fff;
+    line-height:40px;
+    position:absolute;
+    bottom:0px;
+    left:50%;
+    translate:-50% 0%;
+    width:100%;
+    height:40px;
+    background:linear-gradient(rgba(0,0,0,0), #303030);
+}
+
+.showcase:where(:hover, :focus){
+    border-color:var(--color);
+    box-shadow:none;
+    scale:0.98;
+}
+
+@media screen and (max-width:1100px){
+    .showcase{
+        display:none;
+    }
+}
+
+.admin{
+    position:relative;
+    height:250px;
+    width:220px;
+    background:var(--backborder);
+    border:2px solid var(--border);
+    border-radius:8px;
+    margin:10px;
+    transition:.2s;
+    cursor:pointer;
+}
+
+.admin:where(:hover, :focus){
+    border-color:var(--color);
+    scale:0.98;
+}
+
+.admin_users{
+    position:absolute;
+    top:20px;
+    left:20px;
+    margin:0px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.admin_count{
+    position:absolute;
+    bottom:50px;
+    left:20px;
+    margin:0px;
+    font-size:60px;
+    font-weight:bold;
+}
+
+.admin_count_it{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    margin:0px;
+    font-size:15px;
+    font-weight:bold;
+    color:#ff6600;
 }
