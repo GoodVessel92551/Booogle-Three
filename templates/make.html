@@ -12,6 +12,7 @@
         <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
         <meta name="theme-color" id="theme" content="#ff6600">
         <link rel="manifest" href="/static/manifest.json">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
@@ -22,13 +23,32 @@
             <textarea class="title" id="desc" name="desc" style="height:150px;" required placeholder="Description" maxlength="400"></textarea><br>
             <input type="submit" class="send" value="Submit">
         </form>
+        <nav class="navbar">
+            <a href="/home" class="icon nava">home</a>
+            <a href="/maths" class="icon nava">calculate</a>
+            <a href="/number" class="icon nava">casino</a>
+            <a href="/current" class="icon nava">schedule</a>
+            <a href="/countdown-timer" class="icon nava">hourglass_empty</a>
+            <a href="/stopwatch" class="icon nava">timer</a>
+            <a href="/tasks" class="icon nava navselect">task</a>
+            <a href="/games" class="icon nava">sports_esports</a>
+            <a href="/settings" class="icon nava">tune</a>
+            <a href="/admin" class="icon nava" id="navadmin" style="display:none;">admin_panel_settings</a>
+            <a href="/__repl" class="icon nava">favorite</a>
+            <a href="https://replit.com/@GoodVessel92551" class="icon nava">person_add</a>
+            <a href="/time" class="navtime" id="navtime"></a>
+        </nav>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
             photo = {{back|tojson}};
+            if (name == "GoodVessel92551"){
+                document.getElementById("navadmin").style.display = "block"
+            }
             document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             document.getElementById("profile").src = profile
         </script>
         <script src="static/app.js"></script>
+        <script src="static/time.js"></script>
     </body>
 </html>

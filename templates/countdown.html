@@ -4,15 +4,6 @@
         <title>Booogle</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel = "icon" href = "static/logo.png" type = "image/x-icon">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect<!DOCTYPE html>
-<html lang="en-GB">
-    <head>
-        <title>Booogle</title>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel = "icon" href = "/static/logo.png" type = "image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,12 +32,30 @@
                 <input type="submit" class="submit">
             </form>
         </dialog>
+        <nav class="navbar">
+            <a href="/home" class="icon nava">home</a>
+            <a href="/maths" class="icon nava">calculate</a>
+            <a href="/number" class="icon nava">casino</a>
+            <a href="/current" class="icon nava">schedule</a>
+            <a href="/countdown-timer" class="icon nava">hourglass_empty</a>
+            <a href="/stopwatch" class="icon nava navselect">timer</a>
+            <a href="/tasks" class="icon nava">task</a>
+            <a href="/games" class="icon nava">sports_esports</a>
+            <a href="/settings" class="icon nava">tune</a>
+            <a href="/admin" class="icon nava" id="navadmin" style="display:none;">admin_panel_settings</a>
+            <a href="/__repl" class="icon nava">favorite</a>
+            <a href="https://replit.com/@GoodVessel92551" class="icon nava">person_add</a>
+            <a href="/time" class="navtime" id="navtime"></a>
+        </nav>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
             document.getElementById("profile").src = profile
             time = {{time|tojson}};
             photo = {{back|tojson}};
+            if (name == "GoodVessel92551"){
+                document.getElementById("navadmin").style.display = "block"
+            }
             document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             let start2 = true
             var id
@@ -85,4 +94,5 @@
                 }
     </script>
     <script src="static/app.js"></script>
+        <script src="static/time.js"></script>
     </body>

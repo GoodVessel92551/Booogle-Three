@@ -12,7 +12,7 @@
         <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
         <meta name="theme-color" id="theme" content="#ff6600">
         <link rel="manifest" href="/static/manifest.json">
-                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
@@ -23,6 +23,21 @@
             <div class="admin"><p class="admin_users">Open ReplTask</p><b class="admin_count" id="repltask">78</b><b class="admin_count_it" id="repltask_count"><span class="icon">trending_flat</span> 0</b></div>
             <div onclick="window.open('/admin/feedback','_self')" class="admin"><p class="admin_users">Feedback</p><b class="admin_count" id="feedback">78</b><b class="admin_count_it" id="feedback_count"><span class="icon">trending_flat</span> 0</b></div>
         </div>
+        <nav class="navbar">
+            <a href="/home" class="icon nava">home</a>
+            <a href="/maths" class="icon nava">calculate</a>
+            <a href="/number" class="icon nava">casino</a>
+            <a href="/current" class="icon nava">schedule</a>
+            <a href="/countdown-timer" class="icon nava">hourglass_empty</a>
+            <a href="/stopwatch" class="icon nava">timer</a>
+            <a href="/tasks" class="icon nava">task</a>
+            <a href="/games" class="icon nava">sports_esports</a>
+            <a href="/settings" class="icon nava">tune</a>
+            <a href="/admin" class="icon nava navselect" id="navadmin" style="display:none;">admin_panel_settings</a>
+            <a href="/__repl" class="icon nava">favorite</a>
+            <a href="https://replit.com/@GoodVessel92551" class="icon nava">person_add</a>
+            <a href="/time" class="navtime" id="navtime"></a>
+        </nav>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
@@ -31,6 +46,9 @@
             mail = {{mail|tojson}};
             feedback = {{feedback|tojson}};
             repltask = {{repltask|tojson}};
+            if (name == "GoodVessel92551"){
+                document.getElementById("navadmin").style.display = "block"
+            }
             var old_users = localStorage.getItem("users")
             var old_mail = localStorage.getItem("mail")
             var old_repltask = localStorage.getItem("repltask")
@@ -67,5 +85,6 @@
             document.getElementById("profile").src = profile
         </script>
         <script src="static/app.js"></script>
+        <script src="static/time.js"></script>
     </body>
 </html>

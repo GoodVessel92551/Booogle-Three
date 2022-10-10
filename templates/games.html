@@ -12,6 +12,7 @@
         <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
         <meta name="theme-color" id="theme" content="#ff6600">
         <link rel="manifest" href="/static/manifest.json">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
@@ -21,13 +22,32 @@
             <a style="animation-delay:0.9s;" href="/play?game=maze"><b>Maze Game</b><br><br><span>The maze game is a simple puzzle game in which you have to try to find your way to a black hole and jump in it to get to the next level but you have limited vision. You use the arrow keys to move and try not to touch the lava.</span></a>
             <a style="animation-delay:1.2s;" href="/play?game=adventure"><b>Adventure Game</b><br><br><span>This is a small Adventure Game where the aim is to complete quests to move onto the next level.  To move use the arrow keys or WASD. IT will also save your loot and what level you are on.</span></a>
         </div>
+        <nav class="navbar">
+            <a href="/home" class="icon nava">home</a>
+            <a href="/maths" class="icon nava">calculate</a>
+            <a href="/number" class="icon nava">casino</a>
+            <a href="/current" class="icon nava">schedule</a>
+            <a href="/countdown-timer" class="icon nava">hourglass_empty</a>
+            <a href="/stopwatch" class="icon nava">timer</a>
+            <a href="/tasks" class="icon nava">task</a>
+            <a href="/games" class="icon nava navselect">sports_esports</a>
+            <a href="/settings" class="icon nava">tune</a>
+            <a href="/admin" class="icon nava" id="navadmin" style="display:none;">admin_panel_settings</a>
+            <a href="/__repl" class="icon nava">favorite</a>
+            <a href="https://replit.com/@GoodVessel92551" class="icon nava">person_add</a>
+            <a href="/time" class="navtime" id="navtime"></a>
+        </nav>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
             photo = {{back|tojson}};
+            if (name == "GoodVessel92551"){
+                document.getElementById("navadmin").style.display = "block"
+            }
             document.querySelector("body").style.setProperty("background-image","url(/static/background/"+photo+".jpg)")
             document.getElementById("profile").src = profile
         </script>
         <script src="static/app.js"></script>
+        <script src="static/time.js"></script>
     </body>
 </html>

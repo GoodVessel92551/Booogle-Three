@@ -12,6 +12,7 @@
         <link href="{{ url_for('static',filename='main.css')}}" rel="stylesheet" type="text/css">
         <meta name="theme-color" id="theme" content="#ff6600">
         <link rel="manifest" href="/static/manifest.json">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <div class="pic" style="animation-delay:0.3s;"><img id="profile"></img></a></div>
@@ -26,6 +27,21 @@
             <a href="/settings" style="animation-delay:2.1s;background-image:url(/static/icons/settings.png);"></a>
             <a href="/admin" id="admin" style="animation-delay:2.1s;background-image:url(/static/icons/admin.png);" hidden></a>
         </div>
+        <nav class="navbar">
+            <a href="/home" class="icon nava navselect">home</a>
+            <a href="/maths" class="icon nava">calculate</a>
+            <a href="/number" class="icon nava">casino</a>
+            <a href="/current" class="icon nava">schedule</a>
+            <a href="/countdown-timer" class="icon nava">hourglass_empty</a>
+            <a href="/stopwatch" class="icon nava">timer</a>
+            <a href="/tasks" class="icon nava">task</a>
+            <a href="/games" class="icon nava">sports_esports</a>
+            <a href="/settings" class="icon nava">tune</a>
+            <a href="/admin" class="icon nava" id="navadmin" style="display:none;">admin_panel_settings</a>
+            <a href="/__repl" class="icon nava" target="_blank" style="color:#FF0000;">favorite</a>
+            <a href="https://replit.com/@GoodVessel92551" target="_blank" class="icon nava" style="color:#0072B5;">person_add</a>
+            <a href="/time" class="navtime" id="navtime"></a>
+        </nav>
         <script>
             profile = {{profile_pic|tojson}};
             name = {{name|tojson}};
@@ -34,8 +50,10 @@
             document.getElementById("profile").src = profile
             if (name == "GoodVessel92551"){
                 document.getElementById("admin").style.display = "block"
+                document.getElementById("navadmin").style.display = "block"
             }
         </script>
         <script src="static/app.js"></script>
+        <script src="static/time.js"></script>
     </body>
 </html>

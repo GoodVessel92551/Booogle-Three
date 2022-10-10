@@ -16,51 +16,44 @@ def login():
 @app.route("/home")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def home():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     users.current["pic"] = request.headers["X-Replit-User-Profile-Image"]
     if web.auth.name not in db["names"]:
+        users.current["pic"] = request.headers["X-Replit-User-Profile-Image"]
         users.current["photo"] = "rock4"
         users.current["tasks"] = []
         users.current["id"] = 0
         users.current["time"] = ["0","10","0"]
         db["names"].append(web.auth.name)
+    try:
+        users.current["photo"]
+    except:
+        users.current["photo"] = "rock4"
     return render_template("home.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 
 @app.route("/maths")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def maths():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     return render_template("maths.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/number")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def number():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     return render_template("number.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/time")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def time():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     return render_template("time.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/current")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def current():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     return render_template("current.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/countdown-timer" , methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def countdown():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     if request.method == "POST":
         hours = request.form["hours"]
         min = request.form["min"]
@@ -80,22 +73,16 @@ def countdown():
 @app.route("/write")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def write():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     return render_template("write.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/stopwatch")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def stopwatch():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     return render_template("stopwatch.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/tasks" , methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def tasks():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     if request.method == "POST":
         pass
     return render_template("tasks.html", profile_pic=users.current["pic"],name=web.auth.name, time=users.current["time"][0:], tasks=users.current["tasks"][0:],back=users.current["photo"])
@@ -103,22 +90,16 @@ def tasks():
 @app.route("/games")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def games():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     return render_template("games.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/play")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def play():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     return render_template("play.html", profile_pic=users.current["pic"],name=web.auth.name,game=request.args.get("game"),back=users.current["photo"])
 
 @app.route("/edit", methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def edit():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     return render_template("edit.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/sw.js", methods=["GET"])
@@ -128,8 +109,6 @@ def sw():
 @app.route('/delete')
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def delete():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     id = request.args.get("id")
     current_tasks = users.current["tasks"]
     for i in range(len(current_tasks)):
@@ -147,8 +126,6 @@ def delete():
 @app.route('/edit_task' , methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def editit():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     if request.method == "POST":
         id = request.args.get("id")
         new_tasks = users.current["tasks"]
@@ -179,8 +156,6 @@ def editit():
 @app.route('/new' , methods=["POST", "GET"])
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def new():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     if request.method == "POST":
         if len(users.current["tasks"])%3 > 20:
             return "You have reached your max amount of tasks remove some so you can make more."
@@ -233,8 +208,6 @@ def beta():
 @app.route("/settings")
 @web.authenticated(login_res="<script>window.open('/','_self')</script>")
 def settings():
-    if fun.beta(web.auth.name) != True:
-        return redirect("/joinbeta")
     return render_template("settings.html", profile_pic=users.current["pic"],name=web.auth.name,back=users.current["photo"])
 
 @app.route("/background/pick", methods=["GET", "POST"])
@@ -313,4 +286,4 @@ def open():
 @app.route("/offline")
 def offline():
     return render_template("offline.html")
-app.run(host='0.0.0.0', port=81,debug=True) 
+app.run(host='0.0.0.0', port=81,debug=False) 
